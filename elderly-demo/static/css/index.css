@@ -2,21 +2,6 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
-.video-container {
-  display: flex;
-  flex-direction: row;       /* 기본값이지만 명시적으로 설정 */
-  justify-content: space-around; /* 혹은 center, space-between 등 원하는 정렬 선택 */
-  align-items: center;
-  flex-wrap: nowrap;         /* 줄바꿈 없이 한 줄에 유지 */
-}
-
-.video-container .item video {
-  width: 30%;    /* 필요에 따라 조정 */
-  height: auto;  /* 비율 유지 */
-  object-fit: cover !important;
-  border-radius: 10px !important;
-}
-
 .footer .icon-link {
     font-size: 25px;
     color: #000;
