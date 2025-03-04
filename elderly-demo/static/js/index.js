@@ -18,8 +18,8 @@ function setInterpolationImage(i) {
   image.oncontextmenu = function() { return false; };
   $('#interpolation-image-wrapper').empty().append(image);
   var risk_levels = [
-         0,  1,  0,  1,  2,  2,  3,  4,  3,  0,
-         3,  1,  0,  0,  5,  8,  9, 11, 15, 16,
+         16, 21, 20, 19, 23, 25, 28, 30, 29, 30,
+         20, 21, 20, 19, 23, 25, 28, 30, 29, 30,
         20, 21, 20, 19, 23, 25, 28, 30, 29, 30,
         30, 30, 31, 32, 33, 30, 30, 29, 31, 32,
         32, 31, 33, 31, 32, 34, 35, 34, 36, 38,
