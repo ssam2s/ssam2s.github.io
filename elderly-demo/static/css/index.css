@@ -13,7 +13,8 @@ body {
 .video-container .item video {
   width: 30%;    /* 필요에 따라 조정 */
   height: auto;  /* 비율 유지 */
-  border-radius: 10px;
+  object-fit: cover !important;
+  border-radius: 10px !important;
 }
 
 .footer .icon-link {
