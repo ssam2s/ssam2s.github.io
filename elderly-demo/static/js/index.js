@@ -17,6 +17,7 @@ function setInterpolationImage(i) {
   image.ondragstart = function() { return false; };
   image.oncontextmenu = function() { return false; };
   $('#interpolation-image-wrapper').empty().append(image);
+  $('#interpolation-image-wrapper').append('12');
 }
 
 
