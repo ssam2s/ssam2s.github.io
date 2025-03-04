@@ -1,0 +1,813 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nerfies: Deformable Neural Radiance Fields</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Washington,</span>
+            <span class="author-block"><sup>2</sup>Google Research</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We present the first method capable of photorealistically reconstructing a non-rigidly
+            deforming scene using photos/videos captured casually from mobile phones.
+          </p>
+          <p>
+            Our approach augments neural radiance fields
+            (NeRF) by optimizing an
+            additional continuous volumetric deformation field that warps each observed point into a
+            canonical 5D NeRF.
+            We observe that these NeRF-like deformation fields are prone to local minima, and
+            propose a coarse-to-fine optimization method for coordinate-based models that allows for
+            more robust optimization.
+            By adapting principles from geometry processing and physical simulation to NeRF-like
+            models, we propose an elastic regularization of the deformation field that further
+            improves robustness.
+          </p>
+          <p>
+            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
+            photos/videos into deformable NeRF
+            models that allow for photorealistic renderings of the subject from arbitrary
+            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
+            using a
+            rig with two mobile phones that take time-synchronized photos, yielding train/validation
+            images of the same pose at different viewpoints. We show that our method faithfully
+            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
+            fidelity.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Visual Effects</h2>
+          <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dollyzoom-stacked.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <h2 class="title is-3">Matting</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              As a byproduct of our method, we can also solve the matting problem by ignoring
+              samples that fall outside of a bounding box during rendering.
+            </p>
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/matting.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Animation</h2>
+
+        <!-- Interpolating. -->
+        <h3 class="title is-4">Interpolating states</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can also animate the scene by interpolating the deformation latent codes of two input
+            frames. Use the slider here to linearly interpolate between the left frame and the right
+            frame.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_start.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Start Frame</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_end.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">End Frame</p>
+          </div>
+        </div>
+        <br/>
+        <!--/ Interpolating. -->
+
+        <!-- Re-rendering. -->
+        <h3 class="title is-4">Re-rendering the input video</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
+            viewpoint such as a stabilized camera by playing back the training deformations.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/replay.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!--/ Re-rendering. -->
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+=======
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBNHLWD0TG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MBNHLWD0TG');
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Junhyeok Seo</title>
+
+    <meta name="author" content="Junhyeok Seo">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
+  </head>
+
+  <body>
+    <table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr style="padding:0px">
+        <td style="padding:0px">
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr style="padding:0px">
+              <td style="padding:2.5%;width:70%;vertical-align:middle">
+                <p class="name" style="text-align: center;">
+                  Junhyeok Seo
+                </p>
+                <p>
+                  I am second-year M.S. student in <a href="https://ai.knu.ac.kr/">Department of Artificial Intelligence at Kyungpook National University</a>, advised by Prof. Donggyu Lee</a>.
+                </p>
+                <p>
+                  Prior to KNU, I received B.S. degrees in <a href="https://ce.kumoh.ac.kr/ce/index.do">Department of Computer Engineering at Kumoh National Institute of Technology</a>, advised by Prof. Hyeonju Yoon</a>.
+                  I worked on diverse topics in computer vision, including Multimodal Learning and Imitation Learning.
+                </p>
+                <p style="text-align:center">
+                  <a href="mailto:ssam2s@knu.ac.kr">Email</a> &nbsp;/&nbsp;
+                  <a href="https://www.instagram.com/xeo_xxn">Instagram</a> &nbsp;/&nbsp;
+                  <a href="https://github.com/ssam2s">Github</a>
+                </p>
+              </td>
+              <td style="padding:0%;width:40%;max-width:40%;vertical-align:middle; text-align:right;">
+                <a href="images/jhseo.jpg">
+                  <img style="width:75%;max-width:75%;" alt="profile photo" src="images/jhseo.jpg" class="hoverZoomLink">
+                </a>
+              </td>
+            </tr>
+          </tbody></table>
+
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+              <tr>
+              <td style="padding:20px;width:100%;vertical-align:middle">
+                <h2>News</h2>
+                <p>
+                  <ul>
+                    <li style="list-style-position:inside;margin:0;padding:0;text-align:left;">02/2025: Received a Best Presentation Paper Award in KSC 2024.
+                    <li style="list-style-position:inside;margin:0;padding:0;text-align:left;">12/2024: Presented a paper on single image super-resolution at Korea Software Congress 2024(<a href="https://www.kiise.or.kr/conference/KSC/2024/">KSC 2024</a>).
+                    <li style="list-style-position:inside;margin:0;padding:0;text-align:left;">09/2024: Received a Merit Scholarship(IH003) from KNU.
+                    <li style="list-style-position:inside;margin:0;padding:0;text-align:left;">08/2024: Won a top prize(The Mayor of Daegu Metropolitan City Award) of the <a href="https://n.news.naver.com/article/030/0003228170?sid=102">대구광역시 공공데이터 활용 창업경진대회</a>.
+                    <li style="list-style-position:inside;margin:0;padding:0;text-align:left;">03/2024: Received a Merit Scholarship(IH003) from KNU.
+                    <li style="list-style-position:inside;margin:0;padding:0;text-align:left;">03/2024: Joined <a href="https://sites.google.com/view/cvmilab">Computer Vision and Machine Intelligence Lab.</a> at KNU(Kyungpook National University).
+                  </ul>
+                </p>
+              </td>
+            </tr>
+          </tbody></table>
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <h2>Research</h2>
+            </td>
+          </tr>
+        </tbody></table>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/Diffusion.png' width="160" height="160">
+                </div>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="data/Diffusion.pdf">
+                  <span class="papertitle">Diffusion Model Based Image Super-Resolution with Multi-Scale High Frequency Error Maps</span>
+                </a>
+                <br>
+                <strong>Junhyeok Seo</strong>, Donggyu Lee
+                <br>
+                <span class="tag red">KSC, 2024</span><span class="tag purple">Best Presentation Paper Award</span>
+                <br>
+                  - Received a Best Presentation Paper Award
+                <br>
+                  - Domestic Conference
+                <br>
+                <p>
+                  
+This paper proposes a diffusion model-based image super-resolution framework using multi-scale high-frequency error maps, enabling accurate restoration of image details and outperforming existing methods on benchmark datasets.
+                  </p>
+              </td>
+            </tr>
+          
+            <tr>
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/TrOCR.png' width="160" height="160">
+                </div>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="data/TrOCR.pdf">
+                  <span class="papertitle">Robust Captcha Image Recognition Algorithm Using Transformer-Based OCR Model</span>
+                </a>
+                <br>
+                <strong>Junhyeok Seo</strong>, Seongjin Jang, Minjun Kim, Hyeonju Yoon
+                <br>
+                <span class="tag blue">KIIT, 2023</span><span class="tag bronze">Bronze Award</span>
+                <br>
+                  - Domestic Conference
+                <br>
+                <p>
+                  This paper proposes a robust OCR algorithm using the end-to-end Transformer-based TrOCR model, achieving a Character Error Rate (CER) of approximately 0.08 and significantly outperforming Tesseract OCR and EasyOCR, which showed 0% accuracy compared to 67.18% accuracy in 400 test videos.
+                  </p>
+              </td>
+            </tr>
+          
+            <tr>
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/CarSeg.png' width="160" height="160">
+                </div>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="data/CarSeg.pdf">
+                  <span class="papertitle">Deep Learning-Based Vehicle Damage Area Detection System using Semantic Segmentation</span>
+                </a>
+                <br>
+                <strong>Junhyeok Seo</strong>, Hyeonju Yoon
+                <br>
+                <span class="tag green">KCC, 2023</span>
+                <br>
+                  - Domestic Conference
+                <br>
+                <p>
+                  This paper proposes a system for detecting vehicle damage areas through semantic segmentation using the UNet++ model, achieving pixel-level accuracy with an average IoU of 0.94 and comparing its performance with the conventional U-Net model under the same conditions.
+                  </p>
+              </td>
+            </tr>
+          
+            <tr>
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <img src='images/StainSeg.png' width="160" height="160">
+                </div>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="data/StainSeg.pdf">
+                  <span class="papertitle">Segmentation of Stain Area in Clothing Images using UNet++</span>
+                </a>
+                <br>
+                <strong>Junhyeok Seo</strong>, Gunwook Kim, Junsu Park, Sungyoung Kim
+                <br>
+                <span class="tag blue">KIIT, 2023</span><span class="tag bronze">Bronze Award</span>
+                <br>
+                  - Winning a Bronze Award for Outstanding Paper
+                <br>
+                  - Domestic Conference
+                <br>
+                <p>
+                  This paper proposes a deep learning-based technique for detecting stains in clothing images using a UNet++ model with an EfficientNet encoder pre-trained on ImageNet, achieving an average IoU of approximately 0.9589 through semantic segmentation of 200 stained clothing images.
+                  </p>
+              </td>
+            </tr>
+          
+            <tr>
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <img src='images/DomainDict.png' width="160" height="160">
+              </div>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="data/DomainDict.pdf">
+                <span class="papertitle">Domain Dictionary Construction for Automatic Analysis of Subject CQI Reports</span>
+              </a>
+              <br>
+              Gunwoo Kim, Junsu Park, <strong>Junhyeok Seo</strong>, Yuchul Jung, Hyeonju Yoon
+              <br>
+              <span class="tag blue">KIIT, 2022</span><span class="tag silver">Silver Award</span>
+              <br>
+                - Winning a Silver Award for Outstanding Paper
+              <br>
+                - Domestic Conference
+              <br>
+              <p>
+                In this paper, various words used in the actual CQI report are analyzed with the frequency of appearance, and a domain dictionary according to the upper classification and the lower classification is constructed to lay the foundation for future CQI report automatic analysis research.
+                </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <img src='images/Vehicle Detection System.png' width="160" height="160">
+              </div>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="data/Vehicle Detection System.pdf">
+                <span class="papertitle">Deep Learning-Based Vehicle Model and License Plate Identification System using Vehicle Image</span>
+              </a>
+              <br>
+              <strong>Junhyeok Seo</strong>, Hyeonju Yoon
+              <br>
+              <span class="tag blue">KIIT, 2022</span><span class="tag orange">Gold Award</span>
+              <br>
+                - Winning a Gold Award for Outstanding Paper
+              <br>
+                - Domestic Conference
+              <br>
+              <p>
+                I proposed a novel framework for a vehicle model recognition and license plate identification system using YOLOv5, enabling both tasks to be carried out simultaneously. Proposed image processing algorithm for estimating the region of license plate is much lighter than previous deep learning based method.
+                </p>
+            </td>
+          </tr>
+          </tbody></table>
+          
+          <table width="100%" align="center" border="0" cellpadding="20"><tbody>
+            <tr>
+              <td>
+                <h2>Achievements</h2>
+              </td>
+              
+            </tr>
+            
+          </tbody></table>
+
+          <ul>
+            <li>[Scholarship] Merit Scholarship(IH003) from KNU (2024-2)</li>
+            <li>[Scholarship] Merit Scholarship(IH003) from KNU (2024-1)</li>
+            <li>[Awards] The Mayor of Daegu Metropolitan City Award of the <a href="https://n.news.naver.com/article/030/0003228170?sid=102">대구광역시 공공데이터 활용 창업경진대회</a> (2024)</li>
+            <li>[Awards] Best Presentation Paper Award, Korea Software Congress (2024)</li>
+            <li>[Awards] Bronze Award for Outstanding Paper, Proceedings of KIIT Conference (2023)</li>
+            <li>[Awards] Bronze Award for Outstanding Paper, Proceedings of KIIT Conference (2023)</li>
+            <li>[Awards] Silver Award for Outstanding Paper, Proceedings of KIIT Conference (2022)</li>
+            <li>[Awards] Gold Award for Outstanding Paper, Proceedings of KIIT Conference (2022)</li>
+          </ul>
+
+
+          <table width="100%" align="center" border="0" cellpadding="20"><tbody>
+            <tr>
+              <td>
+                <h2>Teaching Assistant</h2>
+              </td>
+              
+            </tr>
+            
+          </tbody></table>
+
+          <ul>
+            <li>(Undergraduate) Problem-Solving Skills and Algorithms (CAIB0230-001) (2024-2)</li>
+          </ul>
+
+
+          <table width="100%" align="center" border="0" cellpadding="20"><tbody>
+            <tr>
+              <td>
+                <h2>Professional Experience</h2>
+              </td>
+              
+            </tr>
+            
+          </tbody></table>
+
+          <ul>
+            <li style="display: flex; align-items: center;">
+              <img src="images/LG.png" style="width: 100px; height: auto; margin-right: 10px;">
+              [Academic] <a href="https://www.lgaimers.ai//">LG Aimers</a>, Education Completion, 2022.7 - 2022.9
+            </li>
+            <br>
+            <li style="display: flex; align-items: center;">
+              <img src="images/타임컴즈.png" style="width: 100px; height: auto; margin-right: 10px;">
+              [Work] <a href="https://www.timecoms.com/">TimeComs</a>, Web Publishing Team, 2022.7 - 2022.9
+            </li>
+            <br>
+            <li style="display: flex; align-items: center;">
+              <img src="images/원익.png" style="width: 100px; height: auto; margin-right: 10px;">
+              [Work] <a href="https://www.wonikqnc.com/ko/">WONIK QnC</a>, Facilities Management Department - Data Processing, 2021.7 - 2021.9
+            </li>
+            <br>
+            <li style="display: flex; align-items: center;">
+              <img src="images/금오공대.png" style="width: 100px; height: auto; margin-right: 10px;">
+              [Academic] <a href="https://www.kumoh.ac.kr/ko/index.do/">Kumoh National Institute of Technology</a>, Freshmen Mentor, 2021.3 - 2022.2
+            </li>
+          </ul>
+
+
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+              <td style="padding:0px">
+                <br>
+                <p style="text-align:right;font-size:small;">
+                  Source code credit to <a href="https://jonbarron.info/" target="_blank">Dr. Jon Barron</a></p>
+                </p>
+              </td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+    </table>
+    <table style="width:50%;margin-left:auto;margin-right:auto;">
+      <tbody>
+        <tr>
+          <td>
+            <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=b5b5b5&w=340&t=tt&d=v8W-Ch_-iX1wT7o_8KQ5gQB6p4WCNY7aTSkwcFpQmZE&co=ffffff&ct=000000'></script>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+>>>>>>> 60c8b8489235bac3fe017a6050b32fc5ac40771f
+</html>
