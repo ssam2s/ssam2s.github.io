@@ -17,7 +17,23 @@ function setInterpolationImage(i) {
   image.ondragstart = function() { return false; };
   image.oncontextmenu = function() { return false; };
   $('#interpolation-image-wrapper').empty().append(image);
-  $('#interpolation-image-wrapper').append('12');
+  var risk_levels = [
+         0,  1,  0,  1,  2,  2,  3,  4,  3,  0,
+         3,  1,  0,  0,  5,  8,  9, 11, 15, 16,
+        20, 21, 20, 19, 23, 25, 28, 30, 29, 30,
+        30, 30, 31, 32, 33, 30, 30, 29, 31, 32,
+        32, 31, 33, 31, 32, 34, 35, 34, 36, 38,
+        39, 40, 41, 42, 40, 41, 43, 44, 45, 42,
+        46, 47, 46, 49, 50, 52, 53, 54, 55, 58,
+        60, 61, 60, 63, 64, 65, 66, 65, 67, 68,
+        72, 73, 70, 71, 73, 75, 74, 73, 76, 77,
+        76, 77, 77, 75, 78, 79, 81, 83, 85, 84,
+        89, 88, 87, 90, 91, 92, 93, 90, 93, 94,
+        95, 97, 96, 95, 96, 95, 97, 98, 97, 98,
+        99, 98, 97, 99, 97, 95, 96, 99,100,100,
+        99,100,100,100, 99,100,100,100, 99,100
+    ];
+  $('#interpolation-image-wrapper').append("위험도: " + risk_levels[i]);
 }
 
 
