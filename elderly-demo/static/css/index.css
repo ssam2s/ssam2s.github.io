@@ -2,21 +2,19 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
-.small-demo {
+.video-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around; /* 혹은 center, space-between 등 */
+  flex-direction: row;       /* 기본값이지만 명시적으로 설정 */
+  justify-content: space-around; /* 혹은 center, space-between 등 원하는 정렬 선택 */
   align-items: center;
-  flex-wrap: nowrap; /* 항목들이 줄바꿈 없이 한 줄에 유지되도록 */
+  flex-wrap: nowrap;         /* 줄바꿈 없이 한 줄에 유지 */
 }
 
-
-.small-demo .item video {
-  width: 30%;   /* 화면 크기에 맞게 조정 가능 */
-  height: auto; /* 비율을 유지합니다. */
+.video-container .item video {
+  width: 30%;    /* 필요에 따라 조정 */
+  height: auto;  /* 비율 유지 */
+  border-radius: 10px;
 }
-
-
 
 .footer .icon-link {
     font-size: 25px;
