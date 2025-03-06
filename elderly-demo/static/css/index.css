@@ -26,14 +26,14 @@ body {
   font-family: 'Google Sans', sans-serif;
 }
 
-.teaser .custom-table-wrapper {
+.section .custom-table-wrapper {
   margin-top: 2rem;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0,0,0,.25);
 }
 
-.teaser .custom-table {
+.section .custom-table {
   border: 1px #a39485 solid;
   font-size: .9em;
   box-shadow: 0 2px 5px rgba(0,0,0,.25);
@@ -43,19 +43,19 @@ body {
   overflow: hidden;
 }
 
-.teaser .custom-table thead {
+.section .custom-table thead {
   font-weight: bold;
   color: #fff;
   background: #73685d;
 }
 
-.teaser .custom-table th,
-.teaser .custom-table td {
+.section .custom-table th,
+.section .custom-table td {
   padding: 1em 0.5em;
   vertical-align: middle;
 }
 
-.teaser .custom-table td {
+.section .custom-table td {
   border-bottom: 1px solid rgba(0,0,0,.1);
   background: #fff;
 }
