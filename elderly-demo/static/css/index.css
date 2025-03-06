@@ -34,10 +34,13 @@ body {
 }
 
 .teaser .custom-table {
-  border: 1px solid #a39485;
+  border: 1px #a39485 solid;
   font-size: .9em;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
   width: 100%;
   border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .teaser .custom-table thead {
