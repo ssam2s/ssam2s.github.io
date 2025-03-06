@@ -28,7 +28,7 @@ body {
 
 /* custom-table-wrapper: 테이블 감싸는 박스 */
 .custom-table-wrapper {
-  margin-top: 2rem;
+  margin-top: 1rem;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0,0,0,0.25);
