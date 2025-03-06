@@ -52,7 +52,7 @@ body {
 /* 테이블 셀 패딩 및 정렬 */
 .custom-table th,
 .custom-table td {
-  padding: 1em 0.5em;
+  padding: 0.4em 0.5em;
   vertical-align: middle;
 }
 
