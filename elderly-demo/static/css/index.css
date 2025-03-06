@@ -28,7 +28,7 @@ body {
 
 /* custom-table-wrapper: 테이블 감싸는 박스 */
 .custom-table-wrapper {
-  margin-top: 1rem;
+  margin-top: 0.4rem;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0,0,0,0.25);
@@ -52,7 +52,7 @@ body {
 /* 테이블 셀 패딩 및 정렬 */
 .custom-table th,
 .custom-table td {
-  padding: 0.4em 0.5em;
+  padding: 1em 0.5em;
   vertical-align: middle;
 }
 
