@@ -1,428 +1,936 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBNHLWD0TG"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'G-MBNHLWD0TG');
-    </script>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBNHLWD0TG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-MBNHLWD0TG');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jun-Hyeok Seo</title>
+  <meta name="author" content="Jun-Hyeok Seo">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <style>
+    :root {
+      --theme-color: #4285f4;
+      --text-color: #333;
+      --heading-color: #222;
+      --muted: #6c757d;
+      --divider: #e8e8e8;
+      --bg: #fff;
+      --soft-bg: #f8f9fb;
+    }
 
-    <title>Jun-Hyeok Seo</title>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
-    <meta name="author" content="Jun-Hyeok Seo">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    html {
+      scroll-behavior: smooth;
+    }
 
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
-  </head>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-color);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
 
-  <body>
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    a {
+      color: var(--theme-color);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    a:hover {
+      color: #2a5db0;
+    }
+
+    .navbar {
+      border-bottom: 1px solid var(--divider);
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .navbar-brand {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--heading-color);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--text-color);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .nav-links a:hover {
+      color: var(--theme-color);
+    }
+
+    .profile {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 72px;
+      padding: 24px 0 28px;
+    }
+
+    .profile-img-box {
+      width: 182px;
+      height: 244px;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, .12);
+      flex-shrink: 0;
+    }
+
+    .profile-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      transform: scale(1.18);
+      display: block;
+    }
+
+    .profile-text {
+      max-width: 650px;
+    }
+
+    .profile-text h1 {
+      margin: 0 0 26px;
+      color: #1f2833;
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .profile-text p {
+      margin: 0 0 14px;
+      color: #314054;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .social {
+      display: flex;
+      gap: 10px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #071a33;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 7px 14px;
+      border: 1px solid #cfd8e3;
+      border-radius: 18px;
+      transition: all .2s;
+    }
+
+    .social a:hover {
+      color: var(--theme-color);
+      border-color: var(--theme-color);
+      background: rgba(66, 133, 244, .04);
+    }
+
+    section {
+      padding: 28px 0;
+    }
+
+    .sec-title {
+      display: inline-block;
+      margin: 0 0 18px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--theme-color);
+      color: var(--heading-color);
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .news-year {
+      margin: 18px 0 6px;
+      color: var(--heading-color);
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .news-year:first-of-type {
+      margin-top: 0;
+    }
+
+    .news-list, .act-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .news-list li {
+      display: flex;
+      gap: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .news-list li:last-child {
+      border-bottom: none;
+    }
+
+    .news-date {
+      flex-shrink: 0;
+      min-width: 72px;
+      color: #888;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .news-award {
+      color: #b8860b;
+      font-weight: 700;
+    }
+
+    .news-highlight {
+      color: #c62828;
+      font-weight: 700;
+    }
+
+    .news-collapsible {
+      display: none;
+    }
+
+    .news-collapsible.open {
+      display: block;
+    }
+
+    .news-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      padding: 4px 0;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font: 400 13px/1.4 'Roboto', sans-serif;
+    }
+
+    .news-toggle:hover {
+      color: var(--theme-color);
+    }
+
+    .news-toggle i {
+      transition: transform .2s;
+    }
+
+    .news-toggle.open i {
+      transform: rotate(180deg);
+    }
+
+    .pub-note {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .pub-group-title {
+      margin: 24px 0 6px;
+      color: var(--heading-color);
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .pub-group-title:first-of-type {
+      margin-top: 0;
+    }
+
+    .pub {
+      display: flex;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--divider);
+      align-items: flex-start;
+    }
+
+    .pub:last-child {
+      border-bottom: none;
+    }
+
+    .pub-img {
+      position: relative;
+      width: 200px;
+      aspect-ratio: 16 / 9;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--divider);
+      border-radius: 8px;
+      background: #f7f7f7;
+      overflow: hidden;
+    }
+
+    .pub-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(66, 133, 244, .86);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .2px;
+      padding: 2px 6px;
+      border-radius: 4px 0 4px 0;
+    }
+
+    .badge.international {
+      background: rgba(147, 112, 219, .9);
+    }
+
+    .pub-body {
+      flex: 1;
+    }
+
+    .pub-title {
+      margin: 0 0 4px;
+      color: var(--heading-color);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .pub-authors {
+      margin: 0 0 3px;
+      font-size: 14px;
+    }
+
+    .pub-venue {
+      margin: 0 0 6px;
+      color: var(--muted);
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    .pub-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+      align-items: center;
+    }
+
+    .pub-links a, .abs-btn {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--divider);
+      border-radius: 4px;
+      padding: 3px 10px;
+      background: none;
+      color: var(--muted);
+      cursor: pointer;
+      font: 300 12px/1.4 'Roboto', sans-serif;
+      text-align: center;
+      transition: all .2s;
+    }
+
+    .pub-links a:hover, .abs-btn:hover {
+      color: var(--theme-color);
+      border-color: var(--theme-color);
+    }
+
+    .pub-abstract {
+      display: none;
+      margin-top: 10px;
+      padding: 12px 14px;
+      background: var(--soft-bg);
+      border-left: 3px solid var(--theme-color);
+      border-radius: 0 6px 6px 0;
+      color: #444;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .pub-abstract.open {
+      display: block;
+    }
+
+    .pub-award {
+      display: inline-flex;
+      align-items: center;
+      color: #9a6a00;
+      background: #fff8df;
+      border: 1px solid #f0d98a;
+      border-radius: 4px;
+      padding: 3px 10px;
+      font-size: 12px;
+      font-weight: 500;
+      font-style: normal;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .pub-highlight {
+      display: inline-flex;
+      align-items: center;
+      color: #b51f1f;
+      background: #fff0f0;
+      border: 1px solid #efb6b6;
+      border-radius: 4px;
+      padding: 3px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      font-style: normal;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .exp {
+      display: flex;
+      gap: 24px;
+      padding: 14px 0;
+      align-items: center;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .exp:last-child {
+      border-bottom: none;
+    }
+
+    .exp-logo {
+      width: 100px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .exp-logo img {
+      max-width: 100%;
+      max-height: 75px;
+      object-fit: contain;
+    }
+
+    .exp-text {
+      flex: 1;
+    }
+
+    .exp-text .title {
+      margin: 0;
+      color: var(--heading-color);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .exp-text .detail {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .exp-text .date {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .act-cat {
+      margin: 22px 0 8px;
+      color: var(--heading-color);
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .act-cat:first-of-type {
+      margin-top: 0;
+    }
+
+    .act-list li {
+      position: relative;
+      padding: 4px 0 4px 16px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .act-list li::before {
+      content: '-';
+      position: absolute;
+      left: 0;
+      color: var(--theme-color);
+    }
+
+    .footer {
+      margin-top: 40px;
+      padding: 28px 0;
+      border-top: 1px solid var(--divider);
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 3px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer a {
+      color: var(--muted);
+    }
+
+    .footer a:hover {
+      color: var(--theme-color);
+    }
+
+    @media (max-width: 768px) {
+      .navbar .container {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 14px;
+        justify-content: flex-start;
+      }
+
+      .profile {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding: 32px 0 30px;
+        text-align: center;
+      }
+
+      .profile-img-box {
+        width: 160px;
+        height: 214px;
+      }
+
+      .profile-text h1 {
+        font-size: 32px;
+      }
+
+      .social {
+        justify-content: center;
+      }
+
+      .news-list li {
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .pub {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .pub-img {
+        width: 100%;
+        max-width: 280px;
+        aspect-ratio: 16 / 9;
+      }
+
+      .exp {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
     <div class="container">
-      <header class="header">
-        <div class="header-content">
-          <div class="header-text">
-            <h1 class="name">Jun-Hyeok Seo</h1>
-            <p>
-              I am first-year Ph.D. student in <a href="https://ai.knu.ac.kr/">Department of Artificial Intelligence at Kyungpook National University</a>, advised by Prof. Dong-Gyu Lee</a>.
-            </p>
-            <p>
-              Prior to KNU, I received a B.S. degree in <a href="https://ce.kumoh.ac.kr/ce/index.do">Department of Computer Engineering at Kumoh National Institute of Technology</a>, advised by Prof. Hyeonju Yoon</a>.
-              I worked on diverse topics in computer vision.
-            </p>
-            <div class="social-links">
-              <a href="https://www.linkedin.com/in/ssam2s/">LinkedIn</a> &nbsp;/&nbsp;
-              <a href="mailto:ssam2s@knu.ac.kr">Email</a> &nbsp;/&nbsp;
-              <a href="https://github.com/ssam2s">Github</a>
-            </div>
-          </div>
-          <div class="header-image">
-            <a href="images/jhseo.jpg">
-              <img src="images/jhseo.jpg" alt="profile photo" class="profile-photo">
-            </a>
-          </div>
-        </div>
-      </header>
+      <a class="navbar-brand" href="#">Jun-Hyeok Seo</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+      </ul>
+    </div>
+  </nav>
 
-      <section class="section">
-        <h2>News</h2>
+  <div class="container">
+    <div class="profile" id="about">
+      <div class="profile-text">
+        <h1>Jun-Hyeok Seo</h1>
+        <p>
+          I am a first-year Ph.D. student in the
+          <a href="https://ai.knu.ac.kr/">Department of Artificial Intelligence at Kyungpook National University</a>,
+          advised by Prof. Dong-Gyu Lee at the
+          <a href="https://sites.google.com/view/cvmilab">KNU Computer Vision &amp; Machine Intelligence Lab</a>.
+        </p>
+        <p>
+          Prior to KNU, I received my B.S. degree from the
+          <a href="https://ce.kumoh.ac.kr/ce/index.do">Department of Computer Engineering at Kumoh National Institute of Technology</a>,
+          advised by Prof. Hyeonju Yoon. My research focuses on <b>human-centric AI</b> and <b>computer vision</b>.
+        </p>
+        <div class="social">
+          <a href="https://www.linkedin.com/in/ssam2s/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/ssam2s"><i class="fab fa-github"></i> GitHub</a>
+          <a href="mailto:ssam2s@knu.ac.kr"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+      </div>
+      <div class="profile-img-box">
+        <img src="images/jhseo.jpg" alt="Jun-Hyeok Seo">
+      </div>
+    </div>
+
+    <section id="news">
+      <h2 class="sec-title">News</h2>
+      <div class="news-year">2026</div>
+      <ul class="news-list">
+        <li><span class="news-date">May 2026</span><span>One paper is <span class="news-highlight">under review</span> for <a href="https://neurips.cc/"><b>Conference on Neural Information Processing Systems (NeurIPS)</b></a>.</span></li>
+        <li><span class="news-date">Jan 2026</span><span>One paper is <span class="news-highlight">under review</span> for <a href="https://www.embs.org/jbhi/"><b>IEEE Journal of Biomedical and Health Informatics (JBHI)</b></a>.</span></li>
+      </ul>
+
+      <button class="news-toggle" type="button" onclick="toggleNews(this)" aria-expanded="false" aria-controls="older-news">
+        <i class="fas fa-chevron-down"></i>
+        <span>Show older news</span>
+      </button>
+
+      <div class="news-collapsible" id="older-news">
+        <div class="news-year">2025</div>
         <ul class="news-list">
-          <li>09/2025: I am selected as a Full Scholarship Awardee for my Ph.D. Program at KNU.</li>
-          <li>03/2024: Joined <a href="https://sites.google.com/view/cvmilab">Computer Vision and Machine Intelligence Lab.</a> at KNU(Kyungpook National University).</li>
+          <li><span class="news-date">Oct 2025</span><span>Received the <span class="news-award">Top Prize</span> from the AI Convergence Safety Idea Competition by KNU.</span></li>
+          <li><span class="news-date">Sep 2025</span><span>I was selected as a <span class="news-award">Full Scholarship Awardee</span> for my Ph.D. program at KNU.</span></li>
+          <li><span class="news-date">Sep 2025</span><span>One paper was presented at <a href="data/2025KAIC.pdf"><b>Korea Artificial Intelligence Conference (KAIC)</b></a>.</span></li>
+          <li><span class="news-date">Aug 2025</span><span>Received the <span class="news-award">Encouragement Prize</span> from the AI Hackathon Competition by CNU.</span></li>
+          <li><span class="news-date">Jul 2025</span><span>One paper was presented at <a href="data/CVPRw2025.pdf"><b>IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRw)</b></a>.</span></li>
+          <li><span class="news-date">Jun 2025</span><span>Received the <span class="news-award">3rd Place</span> in the VizWiz Zero-Shot Image Classification Grand Challenge at CVPR Workshops 2025.</span></li>
+          <li><span class="news-date">Apr 2025</span><span>One paper was presented at <a href="data/Diffusion2.pdf"><b>KIISE Transactions on Computing Practices (KTCP)</b></a>.</span></li>
         </ul>
-      </section>
 
-      <section class="section">
-        <h2>Education & Affiliations</h2>
-        <div class="education-list">
-          <div class="education-item">
-            <img src="data/knu.svg" alt="KNU Logo" class="institution-logo">
-            <div class="education-details">
-              <h3>Integrated M.S.-Ph.D. in Artificial Intelligence</h3>
-              <p>Advised by Professor Dong-Gyu Lee.</p>
-              <p><em>Mar 2024 - Present | Daegu, Korea</em></p>
-            </div>
-          </div>
-          <div class="education-list">
-          <div class="education-item">
-            <img src="data/knu.svg" alt="KNU Logo" class="institution-logo">
-            <div class="education-details">
-              <h3>Integrated M.S.-Ph.D. in AI Safety Convergence (Minor)</h3>
-              <p>Advised by Professor Dong-Gyu Lee.</p>
-              <p><em>Mar 2024 - Present | Daegu, Korea</em></p>
-            </div>
-          </div>
-          <div class="education-item">
-            <img src="data/kit.svg" alt="KIT Logo" class="institution-logo">
-            <div class="education-details">
-              <h3>B.S. in Computer Engineering</h3>
-              <p>Advised by Professor Hyeonju Yoon.</p>
-              <p><em>Mar 2020 - Feb 2024 | Gumi, Korea</em></p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2>Research</h2>
-        <p>My research interest is human-centric AI, especially in the field of computer vision (CV).</p>
-
-        <div class="research-list">
-          <div class="research-item">
-            <div class="research-image">
-                <img src='images/DeACT.png' width="160" height="90">
-            </div>
-            <div class="research-content">
-              <a href="https://arxiv.org/">
-                <span class="papertitle">DeACT: Disentangling Action and Scene via Cross-Attentive Purification for Explainable Action Recognition</span>  
-              </a>
-              <br>
-                <strong>Jun-Hyeok Seo</strong>, Dong-Gyu Lee
-              <br>
-              <span class="tag purple">NeurIPS, 2026</span>
-              <br>
-              <p></p>
-              <p>
-                In Preparation
-              </p>
-            </div>
-          </div>
-          
-          <div class="research-item">
-            <div class="research-image">
-                <img src='images/Nira.png' width="160" height="90">
-            </div>
-            <div class="research-content">
-              <a href="https://arxiv.org/">
-                <span class="papertitle">NiRA: Noise-invariant Causal Discrete Representation Alignment for Video-based Remote Physiological Measurement</span>  
-              </a>
-              <br>
-                <strong>Jun-Hyeok Seo</strong>, Da-Hee Kim, Jeong-Cheol Lee, Seungyeon Lee, Sangtae Ahn, and Dong-Gyu Lee
-              <br>
-              <span class="tag blue">IEEE Journal of Biomedical and Health Informatics, 2026</span>
-              <br>
-              <p></p>
-              <p>
-                Under Review
-              </p>
-            </div>
-          </div>
-
-          <div class="research-item">
-            <div class="research-image">
-                <img src='images/KAIC2025.png' width="160" height="90">
-            </div>
-            <div class="research-content">
-              <a href="data/2025KAIC.pdf">
-                <span class="papertitle">Context-Aware Adaptive Mask Selection for Consistent Referring Video Object Segmentation</span>  
-              </a>
-              <br>
-                <strong>Jun-Hyeok Seo</strong>, Young-Woo Youn, Wonjun Choi, and Dong-Gyu Lee
-              <br>
-              <span class="tag gray">KAIC, 2025</span>
-              <br>
-              <p></p>
-              <p>
-                This paper proposes a context-aware adaptive mask selection framework for referring video object segmentation (RVOS). The method integrates CLIP-based keyframe selection, mask consistency scoring, text-guided object number determination, and temporal mask interpolation to ensure both temporal stability and accurate multi-object segmentation.
-              </p>
-            </div>
-          </div>
-
-          <div class="research-item">
-            <div class="research-image">
-                <img src='images/Diffusion2.png' width="160" height="90">
-            </div>
-            <div class="research-content">
-              <a href="data/Diffusion2.pdf">
-                <span class="papertitle">Enhancing Detail Quality in Latent Diffusion Model-Based Super-Resolution via Multi-Scale Discrete Wavelet Transform</span>  
-              </a>
-              <br>
-                <strong>Jun-Hyeok Seo</strong>, and Dong-Gyu Lee
-              <br>
-              <span class="tag red">KTCP, 2025</span>
-              <br>
-              <p></p>
-              <p>
-                This paper proposes a multi-scale discrete wavelet transform framework designed to enhance the detail quality of super-resolution (SR) methods based on latent diffusion model. Experimental results on benchmark datasets demonstrate that the proposed framework outperforms previous methods, effectively improving the detail quality of super-resolved images.
-              </p>
-            </div>
-          </div>
-
-          <div class="research-item">
-            <div class="research-image">
-                <img src='images/cvprw2025.png' width="160" height="80">
-            </div>
-            <div class="research-content">
-              <a href="data/CVPRw2025.pdf">
-                <span class="papertitle">Multi-Perspective LVLM Prompting for Robust Zero-Shot Image Classification</span>  
-              </a>
-              <br>
-                Wonjun Choi, Jeong-Cheol Lee, <strong>Jun-Hyeok Seo</strong>, and Dong-Gyu Lee
-              <br>
-              <span class="tag blue">CVPRw, 2025</span>
-              <br>
-              <p></p>
-              <p>
-                This paper proposes a multi-perspective prompt-based framework for zero-shot image classification using LVLMs, enhancing robustness by integrating object-aware, intent-aware, and reason-aware prompts, and achieving superior performance through ensemble prediction on the VizWiz dataset.
-              </p>
-            </div>
-          </div>
-
-          <div class="research-item">
-            <div class="research-image">
-              <img src="images/Diffusion.png" width="160" height="160">
-            </div>
-            <div class="research-content">
-              <a href="data/Diffusion.pdf">
-                <span class="papertitle">Diffusion Model Based Image Super-Resolution with Multi-Scale High Frequency Error Maps</span>
-              </a>
-              <br>
-              <strong>Jun-Hyeok Seo</strong>, and Dong-Gyu Lee
-              <br>
-              <span class="tag gray">KSC, 2024</span><span class="tag purple">Best Presentation Paper Award</span>
-              <p>
-                This paper proposes a diffusion model-based image super-resolution framework using multi-scale high-frequency error maps, enabling accurate restoration of image details and outperforming existing methods on benchmark datasets.
-              </p>
-            </div>
-          </div>
-      
-          <!-- TrOCR KIIT 2023 -->
-          <div class="research-item">
-            <div class="research-image">
-              <img src="images/TrOCR.png" width="160" height="160">
-            </div>
-            <div class="research-content">
-              <a href="data/TrOCR.pdf">
-                <span class="papertitle">Robust Captcha Image Recognition Algorithm Using Transformer-Based OCR Model</span>
-              </a>
-              <br>
-              <strong>Junhyeok Seo</strong>, Seongjin Jang, Minjun Kim, and Hyeonju Yoon
-              <br>
-              <span class="tag gray">KIIT, 2023</span><span class="tag bronze">Bronze Award</span>
-              <p>
-                This paper proposes a robust OCR algorithm using the end-to-end Transformer-based TrOCR model, achieving a Character Error Rate (CER) of approximately 0.08 and significantly outperforming Tesseract OCR and EasyOCR.
-              </p>
-            </div>
-          </div>
-      
-          <!-- CarSeg KCC 2023 -->
-          <div class="research-item">
-            <div class="research-image">
-              <img src="images/CarSeg.png" width="160" height="160">
-            </div>
-            <div class="research-content">
-              <a href="data/CarSeg.pdf">
-                <span class="papertitle">Deep Learning-Based Vehicle Damage Area Detection System using Semantic Segmentation</span>
-              </a>
-              <br>
-              <strong>Junhyeok Seo</strong>, and Hyeonju Yoon
-              <br>
-              <span class="tag gray">KCC, 2023</span>
-              <p>
-                This paper proposes a system for detecting vehicle damage areas through semantic segmentation using the UNet++ model, achieving pixel-level accuracy with an average IoU of 0.94 and comparing its performance with the conventional U-Net model.
-              </p>
-            </div>
-          </div>
-      
-          <!-- StainSeg KIIT 2023 -->
-          <div class="research-item">
-            <div class="research-image">
-              <img src="images/StainSeg.png" width="160" height="160">
-            </div>
-            <div class="research-content">
-              <a href="data/StainSeg.pdf">
-                <span class="papertitle">Segmentation of Stain Area in Clothing Images using UNet++</span>
-              </a>
-              <br>
-              <strong>Junhyeok Seo</strong>, Gunwook Kim, Junsu Park, and Sungyoung Kim
-              <br>
-              <span class="tag gray">KIIT, 2023</span><span class="tag bronze">Bronze Award</span>
-              <p>
-                This paper proposes a deep learning-based technique for detecting stains in clothing images using a UNet++ model with an EfficientNet encoder pre-trained on ImageNet, achieving an average IoU of approximately 0.9589.
-              </p>
-            </div>
-          </div>
-      
-          <!-- DomainDict KIIT 2022 -->
-          <div class="research-item">
-            <div class="research-image">
-              <img src="images/DomainDict.png" width="160" height="160">
-            </div>
-            <div class="research-content">
-              <a href="data/DomainDict.pdf">
-                <span class="papertitle">Domain Dictionary Construction for Automatic Analysis of Subject CQI Reports</span>
-              </a>
-              <br>
-              Gunwoo Kim, Junsu Park, <strong>Junhyeok Seo</strong>, Yuchul Jung, and Hyeonju Yoon
-              <br>
-              <span class="tag gray">KIIT, 2022</span><span class="tag silver">Silver Award</span>
-              <p>
-                This paper analyzes various words used in CQI reports and constructs a domain dictionary to provide the foundation for future automatic analysis of such reports.
-              </p>
-            </div>
-          </div>
-      
-          <!-- Vehicle Detection System KIIT 2022 -->
-          <div class="research-item">
-            <div class="research-image">
-              <img src="images/Vehicle Detection System.png" width="160" height="160">
-            </div>
-            <div class="research-content">
-              <a href="data/Vehicle Detection System.pdf">
-                <span class="papertitle">Deep Learning-Based Vehicle Model and License Plate Identification System using Vehicle Image</span>
-              </a>
-              <br>
-              <strong>Junhyeok Seo</strong>, and Hyeonju Yoon
-              <br>
-              <span class="tag gray">KIIT, 2022</span><span class="tag orange">Gold Award</span>
-              <p>
-                This paper proposes a vehicle model recognition and license plate identification system using YOLOv5, enabling both tasks simultaneously and reducing computational cost compared to previous methods.
-              </p>
-            </div>
-          </div>
-          
-        </div>
-      </section>
-
-      <!-- Achievements Section -->
-      <section class="section">
-        <h2>Achievements</h2>
-        <ul class="awards-list">
-          <li>[Scholarship] Doctoral Program Full Scholarship from KNU (2025-2)</li>
-          <li>[Scholarship] Merit Scholarship(IH003) from KNU (2024-2)</li>
-          <li>[Scholarship] Merit Scholarship(IH003) from KNU (2024-1)</li>
-          <li>[Awards] Top Prize of the AI Convergence Safety Idea Competition by KNU (2025)</li>
-          <li>[Awards] 3rd Place Winner of VizWiz Zero-Shot Image Classification Grand Challenge in CVPR 2025 (2025)</li>
-          <li>[Awards] Merit Award of the AI Hackathon Competition by CNU (2025)</li>
-          <li>[Awards] The Mayor of Daegu Metropolitan City Award of the 
-            <a href="https://n.news.naver.com/article/030/0003228170?sid=102">대구광역시 공공데이터 활용 창업경진대회</a> (2024)
-          </li>
-          <li>[Awards] Best Presentation Paper Award, Korea Software Congress (2024)</li>
-          <li>[Awards] Bronze Award for Outstanding Paper, Proceedings of KIIT Conference (2023)</li>
-          <li>[Awards] Bronze Award for Outstanding Paper, Proceedings of KIIT Conference (2023)</li>
-          <li>[Awards] Silver Award for Outstanding Paper, Proceedings of KIIT Conference (2022)</li>
-          <li>[Awards] Gold Award for Outstanding Paper, Proceedings of KIIT Conference (2022)</li>
+        <div class="news-year">2024</div>
+        <ul class="news-list">
+          <li><span class="news-date">Dec 2024</span><span>Received the <span class="news-award">Best Presentation Paper Award</span> at <b>Korea Software Congress (KSC)</b>.</span></li>
+          <li><span class="news-date">Sep 2024</span><span>Received the <span class="news-award">Merit Scholarship (IH003)</span> from KNU.</span></li>
+          <li><span class="news-date">Jun 2024</span><span>Received <span class="news-award">The Mayor of Daegu Metropolitan City Award</span> at the <a href="https://n.news.naver.com/article/030/0003228170?sid=102"><b>Daegu Public Data Startup Competition</b></a>.</span></li>
+          <li><span class="news-date">Mar 2024</span><span>Joined <a href="https://sites.google.com/view/cvmilab">Computer Vision and Machine Intelligence Lab.</a> at Kyungpook National University.</span></li>
+          <li><span class="news-date">Mar 2024</span><span>Received the <span class="news-award">Merit Scholarship (IH003)</span> from KNU.</span></li>
         </ul>
-      </section>
-      
-      
-      <!-- Teaching Assistant Section -->
-      <section class="section">
-        <h2>Teaching Assistant</h2>
-        <ul class="services-list">
-          <li>(Undergraduate) Data Analysis (CAIB226) (2025-1)</li>
-          <li>(Undergraduate) Problem-Solving Skills and Algorithms (CAIB0230) (2024-2)</li>
-        </ul>
-      </section>
-      
-      
-      <!-- Professional Experience Section -->
-      <section class="section">
-        <h2>Professional Experience</h2>
-        <div class="experience-list">
-          <div class="experience-item">
-            <img src="images/happyaging.png" alt="Happyaging Logo" class="institution-logo">
-            <div class="experience-details">
-              <h3>(주)해피에이징</h3>
-              <p>Technology Transfer</p>
-              <p><em>Jul 2025 - Dec 2025 | Daegu, Korea</em></p>
-            </div>
-          </div>
-      
-          <div class="experience-item">
-            <img src="images/경북대.png" alt="KNU Logo" class="institution-logo">
-            <div class="experience-details">
-              <h3>Kyungpook National University</h3>
-              <p>Undergraduate Tutor</p>
-              <p><em>Mar 2025 - Jul 2025 | Daegu, Korea</em></p>
-            </div>
-          </div>
-      
-          <div class="experience-item">
-            <img src="images/LG.png" alt="LG Aimers Logo" class="institution-logo">
-            <div class="experience-details">
-              <h3>LG Aimers</h3>
-              <p>Education Completion</p>
-              <p><em>Jul 2022 - Sep 2022 | Online</em></p>
-            </div>
-          </div>
-      
-          <div class="experience-item">
-            <img src="images/타임컴즈.png" alt="TimeComs Logo" class="institution-logo">
-            <div class="experience-details">
-              <h3>TimeComs</h3>
-              <p>Web Publishing Team</p>
-              <p><em>Jul 2022 - Sep 2022 | Gumi, Korea</em></p>
-            </div>
-          </div>
-      
-          <div class="experience-item">
-            <img src="images/원익.png" alt="Wonik QnC Logo" class="institution-logo">
-            <div class="experience-details">
-              <h3>WONIK QnC</h3>
-              <p>Facilities Management Department - Data Processing</p>
-              <p><em>Jul 2021 - Sep 2021 | Gumi, Korea</em></p>
-            </div>
-          </div>
-      
-          <div class="experience-item">
-            <img src="images/금오공대.png" alt="KIT Logo" class="institution-logo">
-            <div class="experience-details">
-              <h3>Kumoh National Institute of Technology</h3>
-              <p>Freshmen Mentor</p>
-              <p><em>Mar 2021 - Feb 2022 | Gumi, Korea</em></p>
-            </div>
-          </div>
-      
-        </div>
-      </section>
-                
+      </div>
+    </section>
 
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-              <td style="padding:0px">
-                <br>
-                <p style="text-align:right;font-size:small;">
-                  Source code credit to <a href="https://jonbarron.info/" target="_blank">Dr. Jon Barron</a></p>
-                </p>
-              </td>
-            </tr>
-          </tbody></table>
-        </td>
-      </tr>
-    </table>
-    <table style="width:50%;margin-left:auto;margin-right:auto;">
-      <tbody>
-        <tr>
-          <td>
-            <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=b5b5b5&w=340&t=tt&d=v8W-Ch_-iX1wT7o_8KQ5gQB6p4WCNY7aTSkwcFpQmZE&co=ffffff&ct=000000'></script>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </body>
+    <section id="publications">
+      <h2 class="sec-title">Publications</h2>
+      <p class="pub-note">* indicates equal contribution. † indicates the corresponding author.</p>
+
+      <div class="pub-group-title">International Publications</div>
+
+      <div class="pub">
+        <div class="pub-img"><div class="badge international">NeurIPS 2026</div><img src="images/DeACT.png" alt="DeACT"></div>
+        <div class="pub-body">
+          <div class="pub-title">DeACT: Disentangling Action and Scene via Cross-Attentive Purification for Explainable Action Recognition</div>
+          <div class="pub-authors"><b><u>Jun-Hyeok Seo</u></b>, Dong-Gyu Lee†</div>
+          <div class="pub-venue">Conference on Neural Information Processing Systems (NeurIPS), 2026</div>
+          <div class="pub-links"><button class="abs-btn" onclick="toggleAbstract(this)">Abstract</button><a href="https://arxiv.org/">Paper</a><span class="pub-highlight">Under Review</span></div>
+          <div class="pub-abstract">This work is currently under review.</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-img"><div class="badge international">JBHI 2026</div><img src="images/Nira.png" alt="NiRA"></div>
+        <div class="pub-body">
+          <div class="pub-title">NiRA: Noise-invariant Causal Discrete Representation Alignment for Video-based Remote Physiological Measurement</div>
+          <div class="pub-authors"><b><u>Jun-Hyeok Seo</u></b>, Da-Hee Kim, Jeong-Cheol Lee, Seungyeon Lee, Sangtae Ahn, Dong-Gyu Lee†</div>
+          <div class="pub-venue">IEEE Journal of Biomedical and Health Informatics (JBHI, IF: 6.7), 2026</div>
+          <div class="pub-links"><button class="abs-btn" onclick="toggleAbstract(this)">Abstract</button><a href="https://arxiv.org/">Paper</a><span class="pub-highlight">Under Review</span></div>
+          <div class="pub-abstract">This work investigates noise-invariant causal discrete representation alignment for robust video-based remote physiological measurement.</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-img"><div class="badge international">CVPRw 2025</div><img src="images/cvprw2025.png" alt="CVPR Workshop"></div>
+        <div class="pub-body">
+          <div class="pub-title">Multi-Perspective LVLM Prompting for Robust Zero-Shot Image Classification</div>
+          <div class="pub-authors">Wonjun Choi, Jeong-Cheol Lee, <b><u>Jun-Hyeok Seo</u></b>, Dong-Gyu Lee†</div>
+          <div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRw), 2025</div>
+          <div class="pub-links"><button class="abs-btn" onclick="toggleAbstract(this)">Abstract</button><a href="data/CVPRw2025.pdf">Paper</a></div>
+          <div class="pub-abstract">This paper proposes a multi-perspective prompt-based framework for zero-shot image classification using large vision-language models.</div>
+        </div>
+      </div>
+
+      <div class="pub-group-title">Domestic Publications</div>
+
+      <div class="pub">
+        <div class="pub-img"><div class="badge">KAIC 2025</div><img src="images/KAIC2025.png" alt="KAIC 2025"></div>
+        <div class="pub-body">
+          <div class="pub-title">Context-Aware Adaptive Mask Selection for Consistent Referring Video Object Segmentation</div>
+          <div class="pub-authors"><b><u>Jun-Hyeok Seo</u></b>, Young-Woo Youn, Wonjun Choi, Dong-Gyu Lee†</div>
+          <div class="pub-venue">Korea Artificial Intelligence Conference (KAIC), 2025</div>
+          <div class="pub-links"><button class="abs-btn" onclick="toggleAbstract(this)">Abstract</button><a href="data/2025KAIC.pdf">Paper</a></div>
+          <div class="pub-abstract">This paper proposes a context-aware adaptive mask selection framework for referring video object segmentation. The method integrates CLIP-based keyframe selection, mask consistency scoring, text-guided object number determination, and temporal mask interpolation.</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-img"><div class="badge">KTCP 2025</div><img src="images/Diffusion2.png" alt="Diffusion SR"></div>
+        <div class="pub-body">
+          <div class="pub-title">Enhancing Detail Quality in Latent Diffusion Model-Based Super-Resolution via Multi-Scale Discrete Wavelet Transform</div>
+          <div class="pub-authors"><b><u>Jun-Hyeok Seo</u></b>, Dong-Gyu Lee†</div>
+          <div class="pub-venue">KIISE Transactions on Computing Practices (KTCP), 2025</div>
+          <div class="pub-links"><button class="abs-btn" onclick="toggleAbstract(this)">Abstract</button><a href="data/Diffusion2.pdf">Paper</a></div>
+          <div class="pub-abstract">This paper proposes a multi-scale discrete wavelet transform framework to enhance detail quality in latent diffusion model-based super-resolution.</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-img"><div class="badge">KSC 2024</div><img src="images/Diffusion.png" alt="Diffusion"></div>
+        <div class="pub-body">
+          <div class="pub-title">Diffusion Model Based Image Super-Resolution with Multi-Scale High Frequency Error Maps</div>
+          <div class="pub-authors"><b><u>Jun-Hyeok Seo</u></b>, Dong-Gyu Lee†</div>
+          <div class="pub-venue">Korea Software Congress (KSC), 2024</div>
+          <div class="pub-links"><button class="abs-btn" onclick="toggleAbstract(this)">Abstract</button><a href="data/Diffusion.pdf">Paper</a><span class="pub-award">Best Presentation Paper Award</span></div>
+          <div class="pub-abstract">This paper proposes a diffusion model-based image super-resolution framework using multi-scale high-frequency error maps for accurate restoration of image details.</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-img"><div class="badge">KIIT 2023</div><img src="images/TrOCR.png" alt="TrOCR"></div>
+        <div class="pub-body">
+          <div class="pub-title">Robust Captcha Image Recognition Algorithm Using Transformer-Based OCR Model</div>
+          <div class="pub-authors"><b><u>Jun-Hyeok Seo</u></b>, Seongjin Jang, Minjun Kim, Hyeonju Yoon†</div>
+          <div class="pub-venue">Proceedings of the Korean Institute of Information Technology Conference (KIIT), 2023</div>
+          <div class="pub-links"><button class="abs-btn" onclick="toggleAbstract(this)">Abstract</button><a href="data/TrOCR.pdf">Paper</a><span class="pub-award">Bronze Award</span></div>
+          <div class="pub-abstract">This paper proposes a robust OCR algorithm using an end-to-end Transformer-based TrOCR model for captcha image recognition.</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-img"><div class="badge">KCC 2023</div><img src="images/CarSeg.png" alt="CarSeg"></div>
+        <div class="pub-body">
+          <div class="pub-title">Deep Learning-Based Vehicle Damage Area Detection System using Semantic Segmentation</div>
+          <div class="pub-authors"><b><u>Jun-Hyeok Seo</u></b>, Hyeonju Yoon†</div>
+          <div class="pub-venue">Korea Computer Congress (KCC), 2023</div>
+          <div class="pub-links"><button class="abs-btn" onclick="toggleAbstract(this)">Abstract</button><a href="data/CarSeg.pdf">Paper</a></div>
+          <div class="pub-abstract">This paper proposes a vehicle damage detection system through semantic segmentation using UNet++.</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-img"><div class="badge">KIIT 2023</div><img src="images/StainSeg.png" alt="StainSeg"></div>
+        <div class="pub-body">
+          <div class="pub-title">Segmentation of Stain Area in Clothing Images using UNet++</div>
+          <div class="pub-authors"><b><u>Jun-Hyeok Seo</u></b>, Gunwook Kim, Junsu Park, Sungyoung Kim†</div>
+          <div class="pub-venue">Proceedings of the Korean Institute of Information Technology Conference (KIIT), 2023</div>
+          <div class="pub-links"><button class="abs-btn" onclick="toggleAbstract(this)">Abstract</button><a href="data/StainSeg.pdf">Paper</a><span class="pub-award">Bronze Award</span></div>
+          <div class="pub-abstract">This paper proposes a deep learning-based technique for detecting stains in clothing images using UNet++.</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-img"><div class="badge">KIIT 2022</div><img src="images/DomainDict.png" alt="Domain Dictionary"></div>
+        <div class="pub-body">
+          <div class="pub-title">Domain Dictionary Construction for Automatic Analysis of Subject CQI Reports</div>
+          <div class="pub-authors">Gunwoo Kim, Junsu Park, <b><u>Jun-Hyeok Seo</u></b>, Yuchul Jung, Hyeonju Yoon†</div>
+          <div class="pub-venue">Proceedings of the Korean Institute of Information Technology Conference (KIIT), 2022</div>
+          <div class="pub-links"><button class="abs-btn" onclick="toggleAbstract(this)">Abstract</button><a href="data/DomainDict.pdf">Paper</a><span class="pub-award">Silver Award</span></div>
+          <div class="pub-abstract">This paper constructs a domain dictionary to support automatic analysis of subject CQI reports.</div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-img"><div class="badge">KIIT 2022</div><img src="images/Vehicle Detection System.png" alt="Vehicle Detection"></div>
+        <div class="pub-body">
+          <div class="pub-title">Deep Learning-Based Vehicle Model and License Plate Identification System using Vehicle Image</div>
+          <div class="pub-authors"><b><u>Jun-Hyeok Seo</u></b>, Hyeonju Yoon†</div>
+          <div class="pub-venue">Proceedings of the Korean Institute of Information Technology Conference (KIIT), 2022</div>
+          <div class="pub-links"><button class="abs-btn" onclick="toggleAbstract(this)">Abstract</button><a href="data/Vehicle Detection System.pdf">Paper</a><span class="pub-award">Gold Award</span></div>
+          <div class="pub-abstract">This paper proposes a vehicle model recognition and license plate identification system using YOLOv5.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2 class="sec-title">Education</h2>
+      <div class="exp">
+        <div class="exp-logo"><img src="data/knu.svg" alt="KNU"></div>
+        <div class="exp-text">
+          <p class="title">Integrated M.S.-Ph.D. in Artificial Intelligence</p>
+          <p class="detail">Kyungpook National University</p>
+          <p class="date">Mar. 2024 - Present | Daegu, Korea</p>
+        </div>
+      </div>
+      <div class="exp">
+        <div class="exp-logo"><img src="data/knu.svg" alt="KNU"></div>
+        <div class="exp-text">
+          <p class="title">Integrated M.S.-Ph.D. in AI Safety Convergence (Minor)</p>
+          <p class="detail">Kyungpook National University</p>
+          <p class="date">Mar. 2024 - Present | Daegu, Korea</p>
+        </div>
+      </div>
+      <div class="exp">
+        <div class="exp-logo"><img src="data/kit.svg" alt="KIT"></div>
+        <div class="exp-text">
+          <p class="title">B.S. in Computer Engineering</p>
+          <p class="detail">Kumoh National Institute of Technology</p>
+          <p class="date">Mar. 2020 - Feb. 2024 | Gumi, Korea</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2 class="sec-title">Experience</h2>
+      <div class="exp">
+        <div class="exp-logo"><img src="images/happyaging.png" alt="Happyaging"></div>
+        <div class="exp-text">
+          <p class="title">Technology Transfer</p>
+          <p class="detail">Happyaging</p>
+          <p class="date">Jul. 2025 - Dec. 2025 | Daegu, Korea</p>
+        </div>
+      </div>
+      <div class="exp">
+        <div class="exp-logo"><img src="data/knu.svg" alt="KNU"></div>
+        <div class="exp-text">
+          <p class="title">Undergraduate Tutor</p>
+          <p class="detail">Kyungpook National University</p>
+          <p class="date">Mar. 2025 - Jul. 2025 | Daegu, Korea</p>
+        </div>
+      </div>
+      <div class="exp">
+        <div class="exp-logo"><img src="images/LG.png" alt="LG Aimers"></div>
+        <div class="exp-text">
+          <p class="title">Education Completion</p>
+          <p class="detail">LG Aimers</p>
+          <p class="date">Jul. 2022 - Sep. 2022 | Online</p>
+        </div>
+      </div>
+      <div class="exp">
+        <div class="exp-logo"><img src="images/timecoms.png" alt="TimeComs"></div>
+        <div class="exp-text">
+          <p class="title">Web Publishing Team</p>
+          <p class="detail">TimeComs</p>
+          <p class="date">Jul. 2022 - Sep. 2022 | Gumi, Korea</p>
+        </div>
+      </div>
+      <div class="exp">
+        <div class="exp-logo"><img src="images/wonik.png" alt="WONIK QnC"></div>
+        <div class="exp-text">
+          <p class="title">Facilities Management Department - Data Processing</p>
+          <p class="detail">WONIK QnC</p>
+          <p class="date">Jul. 2021 - Sep. 2021 | Gumi, Korea</p>
+        </div>
+      </div>
+      <div class="exp">
+        <div class="exp-logo"><img src="images/kit-logo.png" alt="KIT"></div>
+        <div class="exp-text">
+          <p class="title">Freshmen Mentor</p>
+          <p class="detail">Kumoh National Institute of Technology</p>
+          <p class="date">Mar. 2021 - Feb. 2022 | Gumi, Korea</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <h2 class="sec-title">Achievements</h2>
+
+      <div class="act-cat">Scholarships</div>
+      <ul class="act-list">
+        <li>Doctoral Program Full Scholarship from KNU, 2025-2</li>
+        <li>Merit Scholarship (IH003) from KNU, 2024-2</li>
+        <li>Merit Scholarship (IH003) from KNU, 2024-1</li>
+      </ul>
+
+      <div class="act-cat">Awards</div>
+      <ul class="act-list">
+        <li>Top Prize, AI Convergence Safety Idea Competition by KNU, 2025</li>
+        <li>3rd Place Winner, VizWiz Zero-Shot Image Classification Grand Challenge in CVPR 2025, 2025</li>
+        <li>Encouragement Prize, AI Hackathon Competition by CNU, 2025</li>
+        <li>The Mayor of Daegu Metropolitan City Award, <a href="https://n.news.naver.com/article/030/0003228170?sid=102">Daegu Public Data Startup Competition</a>, 2024</li>
+        <li>Best Presentation Paper Award, Korea Software Congress, 2024</li>
+        <li>Bronze Award for Outstanding Paper, Proceedings of KIIT Conference, 2023</li>
+        <li>Bronze Award for Outstanding Paper, Proceedings of KIIT Conference, 2023</li>
+        <li>Silver Award for Outstanding Paper, Proceedings of KIIT Conference, 2022</li>
+        <li>Gold Award for Outstanding Paper, Proceedings of KIIT Conference, 2022</li>
+      </ul>
+
+      <div class="act-cat">Teaching Assistant</div>
+      <ul class="act-list">
+        <li>Data Analysis (CAIB226), Undergraduate, 2025-1</li>
+        <li>Problem-Solving Skills and Algorithms (CAIB0230), Undergraduate, 2024-2</li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; Jun-Hyeok Seo | Last updated: May 2026</p>
+      <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?cl=b5b5b5&w=340&t=tt&d=v8W-Ch_-iX1wT7o_8KQ5gQB6p4WCNY7aTSkwcFpQmZE&co=ffffff&ct=000000"></script>
+    </footer>
+  </div>
+
+  <script>
+    function toggleNews(btn) {
+      var news = document.getElementById('older-news');
+      if (!news) return;
+      var isOpen = news.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      var label = btn.querySelector('span');
+      if (label) label.textContent = isOpen ? 'Hide older news' : 'Show older news';
+    }
+
+    function toggleAbstract(btn) {
+      var abs = btn.closest('.pub-body').querySelector('.pub-abstract');
+      if (abs) abs.classList.toggle('open');
+    }
+  </script>
+</body>
+
 </html>
