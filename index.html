@@ -46,6 +46,7 @@
       --badge-intl-bg: rgba(147, 112, 219, .9);
       --thumb-bg: #fff;
       --thumb-shadow: 2px 2px 5px rgba(0, 0, 0, .25);
+      --thumb-shadow-hover: 3px 6px 16px rgba(0, 0, 0, .22);
       --award: #b8860b;
       --highlight: #c62828;
     }
@@ -70,6 +71,7 @@
         --badge-bg: #1f4fbf;
         --thumb-bg: #fff;
         --thumb-shadow: 2px 2px 6px rgba(0, 0, 0, .6);
+        --thumb-shadow-hover: 3px 6px 18px rgba(0, 0, 0, .75);
         --award: #d9a441;
         --highlight: #f07171;
       }
@@ -92,6 +94,7 @@
       --badge-bg: #1f4fbf;
       --thumb-bg: #fff;
       --thumb-shadow: 2px 2px 6px rgba(0, 0, 0, .6);
+      --thumb-shadow-hover: 3px 6px 18px rgba(0, 0, 0, .75);
       --award: #d9a441;
       --highlight: #f07171;
     }
@@ -411,6 +414,80 @@
       aspect-ratio: 5 / 3;
       background: var(--thumb-bg);
       box-shadow: var(--thumb-shadow);
+      cursor: zoom-in;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .paper-thumb:hover {
+      transform: scale(1.04);
+      box-shadow: var(--thumb-shadow-hover);
+    }
+
+    /* Lightbox for enlarged publication thumbnails */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      background: rgba(0, 0, 0, .82);
+      cursor: zoom-out;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-figure {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0;
+    }
+
+    .lightbox-figure img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: calc(100vh - 140px);
+      padding: 8px;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, .5);
+      cursor: default;
+    }
+
+    .lightbox-caption {
+      max-width: 780px;
+      color: #f1f1f1;
+      font-size: 13px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .12);
+      color: #fff;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      transition: background .15s ease;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, .25);
     }
 
     .paper-thumb img {
@@ -688,11 +765,11 @@
         </div>
 
         <div class="paper-box">
-          <div class="paper-box-image"><div class="paper-thumb"><div class="badge badge--intl">JBHI 2026</div><img src="images/Nira.png" alt="NiRA"></div></div>
+          <div class="paper-box-image"><div class="paper-thumb"><div class="badge badge--intl">TCSVT 2026</div><img src="images/Nira.png" alt="NiRA"></div></div>
           <div class="paper-box-text">
             <p class="paper-title"><a href="https://arxiv.org/">NiRA: Noise-invariant Causal Discrete Representation Alignment for Video-based Remote Physiological Measurement</a></p>
             <p><b><u>Jun-Hyeok Seo</u></b>, Da-Hee Kim, Jeong-Cheol Lee, Seungyeon Lee, Sangtae Ahn, Dong-Gyu Lee†</p>
-            <p class="paper-venue">IEEE Journal of Biomedical and Health Informatics (JBHI, IF: 6.7), 2026</p>
+            <p class="paper-venue">IEEE Transactions on Circuits and Systems for Video Technology (TCSVT), 2026</p>
             <p><span class="pub-highlight">Under Review</span></p>
           </div>
         </div>
@@ -846,6 +923,15 @@
     </main>
   </div>
 
+  <!-- Lightbox overlay for publication thumbnails -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged publication image">
+    <button class="lightbox-close" type="button" aria-label="Close">&times;</button>
+    <figure class="lightbox-figure">
+      <img id="lightbox-img" src="" alt="">
+      <figcaption class="lightbox-caption" id="lightbox-caption"></figcaption>
+    </figure>
+  </div>
+
   <script>
     function toggleNews(btn) {
       var news = document.getElementById('older-news');
@@ -856,6 +942,44 @@
       var label = btn.querySelector('span');
       if (label) label.textContent = isOpen ? 'Hide older news' : 'Show older news';
     }
+
+    // Publication thumbnails open full size in a lightbox
+    (function () {
+      var box = document.getElementById('lightbox');
+      var boxImg = document.getElementById('lightbox-img');
+      var boxCap = document.getElementById('lightbox-caption');
+
+      function open(img) {
+        var pub = img.closest('.paper-box');
+        var title = pub ? pub.querySelector('.paper-title') : null;
+        boxImg.src = img.currentSrc || img.src;
+        boxImg.alt = img.alt || '';
+        boxCap.textContent = title ? title.textContent.trim() : (img.alt || '');
+        box.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function close() {
+        box.classList.remove('open');
+        boxImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      document.addEventListener('click', function (e) {
+        var thumb = e.target.closest('.paper-thumb');
+        if (thumb) open(thumb.querySelector('img'));
+      });
+
+      // Click anywhere on the backdrop (or the close button) dismisses it;
+      // clicks on the enlarged image itself do not.
+      box.addEventListener('click', function (e) {
+        if (e.target !== boxImg) close();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && box.classList.contains('open')) close();
+      });
+    })();
 
     // Theme toggle. With no explicit choice the page follows the OS setting;
     // clicking pins a theme and remembers it.
