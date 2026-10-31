@@ -427,6 +427,16 @@
       box-shadow: var(--thumb-shadow-hover);
     }
 
+    /* Unpublished work: the image itself is pre-blurred, so it neither zooms nor opens */
+    .paper-thumb--blurred {
+      cursor: default;
+    }
+
+    .paper-thumb--blurred:hover {
+      transform: none;
+      box-shadow: var(--thumb-shadow);
+    }
+
     /* Lightbox for enlarged publication thumbnails */
     .lightbox {
       position: fixed;
@@ -770,7 +780,7 @@
         </div>
 
         <div class="paper-box">
-          <div class="paper-box-image"><div class="paper-thumb"><div class="badge badge--intl">CVPR 2027</div><img src="images/withheld.png" alt="Withheld"></div></div>
+          <div class="paper-box-image"><div class="paper-thumb paper-thumb--blurred" title="Figure available after publication"><div class="badge badge--intl">CVPR 2027</div><img src="images/withheld.png" alt="Withheld"></div></div>
           <div class="paper-box-text">
             <p class="paper-title">Title withheld until publication</p>
             <p><b><u>Jun-Hyeok Seo</u></b>, Jeong-Cheol Lee, Dong-Gyu Lee†</p>
@@ -780,7 +790,7 @@
         </div>
 
         <div class="paper-box">
-          <div class="paper-box-image"><div class="paper-thumb"><div class="badge badge--intl">ICCV 2027</div><img src="images/DeACT.png" alt="DeACT"></div></div>
+          <div class="paper-box-image"><div class="paper-thumb paper-thumb--blurred" title="Figure available after publication"><div class="badge badge--intl">ICCV 2027</div><img src="images/DeACT.png" alt="DeACT"></div></div>
           <div class="paper-box-text">
             <p class="paper-title"><a href="https://arxiv.org/">DeACT: Disentangling Action and Scene via Cross-Attentive Purification for Explainable Action Recognition</a></p>
             <p><b><u>Jun-Hyeok Seo</u></b>, Dong-Gyu Lee†</p>
@@ -1006,7 +1016,7 @@
 
       document.addEventListener('click', function (e) {
         var thumb = e.target.closest('.paper-thumb');
-        if (thumb) open(thumb.querySelector('img'));
+        if (thumb && !thumb.classList.contains('paper-thumb--blurred')) open(thumb.querySelector('img'));
       });
 
       // Click anywhere on the backdrop (or the close button) dismisses it;
