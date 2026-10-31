@@ -447,6 +447,42 @@
       font-style: italic;
     }
 
+    /* Domestic papers: smaller thumbnail and text so the main list stands out */
+    .paper-box--compact {
+      gap: 1.4em;
+      padding: 1.1em 0;
+    }
+
+    .paper-box--compact .paper-box-image {
+      flex: 0 0 200px;
+      min-width: 0;
+    }
+
+    .paper-box--compact .paper-thumb {
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, .25);
+    }
+
+    .paper-box--compact .paper-thumb img {
+      padding: 4px;
+    }
+
+    .paper-box--compact .badge {
+      padding: 0 .6rem;
+      font-size: 11px;
+    }
+
+    .paper-box--compact .paper-box-text {
+      font-size: 14px;
+    }
+
+    .paper-box--compact .paper-box-text p {
+      margin-bottom: .3em;
+    }
+
+    .paper-box--compact .paper-box-text .paper-title {
+      font-size: 15px;
+    }
+
     .footer {
       margin-top: 48px;
       padding: 28px 0 32px;
@@ -587,6 +623,24 @@
       .paper-box-text {
         order: 1;
       }
+
+      /* Compact papers stay side by side on phones with a small thumbnail */
+      .paper-box--compact {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .paper-box--compact .paper-box-image {
+        flex: 0 0 120px;
+        width: 120px;
+        margin: 4px 0 0;
+        order: 0;
+      }
+
+      .paper-box--compact .paper-box-text {
+        order: 0;
+      }
     }
   </style>
 </head>
@@ -705,7 +759,7 @@
 
         <h2>Domestic Publications</h2>
 
-        <div class="paper-box">
+        <div class="paper-box paper-box--compact">
           <div class="paper-box-image"><div class="paper-thumb"><div class="badge">KAIC 2025</div><img src="images/KAIC2025.png" alt="KAIC 2025"></div></div>
           <div class="paper-box-text">
             <p class="paper-title"><a href="data/2025KAIC.pdf">Context-Aware Adaptive Mask Selection for Consistent Referring Video Object Segmentation</a></p>
@@ -714,7 +768,7 @@
           </div>
         </div>
 
-        <div class="paper-box">
+        <div class="paper-box paper-box--compact">
           <div class="paper-box-image"><div class="paper-thumb"><div class="badge">KTCP 2025</div><img src="images/Diffusion2.png" alt="Diffusion SR"></div></div>
           <div class="paper-box-text">
             <p class="paper-title"><a href="data/Diffusion2.pdf">Enhancing Detail Quality in Latent Diffusion Model-Based Super-Resolution via Multi-Scale Discrete Wavelet Transform</a></p>
@@ -723,7 +777,7 @@
           </div>
         </div>
 
-        <div class="paper-box">
+        <div class="paper-box paper-box--compact">
           <div class="paper-box-image"><div class="paper-thumb"><div class="badge">KSC 2024</div><img src="images/Diffusion.png" alt="Diffusion"></div></div>
           <div class="paper-box-text">
             <p class="paper-title"><a href="data/Diffusion.pdf">Diffusion Model Based Image Super-Resolution with Multi-Scale High Frequency Error Maps</a></p>
@@ -733,7 +787,7 @@
           </div>
         </div>
 
-        <div class="paper-box">
+        <div class="paper-box paper-box--compact">
           <div class="paper-box-image"><div class="paper-thumb"><div class="badge">KIIT 2023</div><img src="images/TrOCR.png" alt="TrOCR"></div></div>
           <div class="paper-box-text">
             <p class="paper-title"><a href="data/TrOCR.pdf">Robust Captcha Image Recognition Algorithm Using Transformer-Based OCR Model</a></p>
@@ -743,7 +797,7 @@
           </div>
         </div>
 
-        <div class="paper-box">
+        <div class="paper-box paper-box--compact">
           <div class="paper-box-image"><div class="paper-thumb"><div class="badge">KCC 2023</div><img src="images/CarSeg.png" alt="CarSeg"></div></div>
           <div class="paper-box-text">
             <p class="paper-title"><a href="data/CarSeg.pdf">Deep Learning-Based Vehicle Damage Area Detection System using Semantic Segmentation</a></p>
@@ -752,7 +806,7 @@
           </div>
         </div>
 
-        <div class="paper-box">
+        <div class="paper-box paper-box--compact">
           <div class="paper-box-image"><div class="paper-thumb"><div class="badge">KIIT 2023</div><img src="images/StainSeg.png" alt="StainSeg"></div></div>
           <div class="paper-box-text">
             <p class="paper-title"><a href="data/StainSeg.pdf">Segmentation of Stain Area in Clothing Images using UNet++</a></p>
@@ -762,7 +816,7 @@
           </div>
         </div>
 
-        <div class="paper-box">
+        <div class="paper-box paper-box--compact">
           <div class="paper-box-image"><div class="paper-thumb"><div class="badge">KIIT 2022</div><img src="images/DomainDict.png" alt="Domain Dictionary"></div></div>
           <div class="paper-box-text">
             <p class="paper-title"><a href="data/DomainDict.pdf">Domain Dictionary Construction for Automatic Analysis of Subject CQI Reports</a></p>
@@ -772,7 +826,7 @@
           </div>
         </div>
 
-        <div class="paper-box">
+        <div class="paper-box paper-box--compact">
           <div class="paper-box-image"><div class="paper-thumb"><div class="badge">KIIT 2022</div><img src="images/Vehicle Detection System.png" alt="Vehicle Detection"></div></div>
           <div class="paper-box-text">
             <p class="paper-title"><a href="data/Vehicle Detection System.pdf">Deep Learning-Based Vehicle Model and License Plate Identification System using Vehicle Image</a></p>
