@@ -426,6 +426,36 @@
       transform: scale(1.04);
       box-shadow: var(--thumb-shadow-hover);
     }
+
+    /* Submissions under anonymous review: no figure is published, so nothing to zoom or open */
+    .paper-thumb--censored {
+      cursor: default;
+    }
+
+    .paper-thumb--censored:hover {
+      transform: none;
+      box-shadow: var(--thumb-shadow);
+    }
+
+    .censored-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(-45deg, #eef0f2 0 10px, #e3e6e9 10px 20px);
+      color: #868e96;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .censored-box i {
+      font-size: 18px;
+    }
     /* Lightbox for enlarged publication thumbnails */
     .lightbox {
       position: fixed;
@@ -759,19 +789,9 @@
         <h2>International Publications</h2>
 
         <div class="paper-box">
-          <div class="paper-box-image"><div class="paper-thumb"><div class="badge badge--intl">CVPR 2027</div><img src="images/withheld.png" alt="Withheld"></div></div>
+          <div class="paper-box-image"><div class="paper-thumb paper-thumb--censored"><div class="badge badge--intl">ICCV 2027</div><div class="censored-box"><i class="fas fa-lock"></i><span>Censored</span></div></div></div>
           <div class="paper-box-text">
-            <p class="paper-title"><a href="https://arxiv.org/">Title withheld until publication</a></p>
-            <p><b><u>Jun-Hyeok Seo</u></b>, Jeong-Cheol Lee, Dong-Gyu Lee†</p>
-            <p class="paper-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2027</p>
-            <p><span class="pub-highlight">In Preparation</span></p>
-          </div>
-        </div>
-
-        <div class="paper-box">
-          <div class="paper-box-image"><div class="paper-thumb"><div class="badge badge--intl">ICCV 2027</div><img src="images/DeACT-preview.png" alt="DeACT"></div></div>
-          <div class="paper-box-text">
-            <p class="paper-title"><a href="https://arxiv.org/">DeACT: Disentangling Action and Scene via Cross-Attentive Purification for Explainable Action Recognition</a></p>
+            <p class="paper-title">Title withheld until publication</p>
             <p><b><u>Jun-Hyeok Seo</u></b>, Dong-Gyu Lee†</p>
             <p class="paper-venue">IEEE/CVF International Conference on Computer Vision (ICCV), 2027</p>
             <p><span class="pub-highlight">In Preparation</span></p>
@@ -779,9 +799,19 @@
         </div>
 
         <div class="paper-box">
-          <div class="paper-box-image"><div class="paper-thumb"><div class="badge badge--intl">ICLR 2027</div><img src="images/withheld.png" alt="Withheld"></div></div>
+          <div class="paper-box-image"><div class="paper-thumb paper-thumb--censored"><div class="badge badge--intl">CVPR 2027</div><div class="censored-box"><i class="fas fa-lock"></i><span>Censored</span></div></div></div>
           <div class="paper-box-text">
-            <p class="paper-title"><a href="https://arxiv.org/">Title withheld until publication</a></p>
+            <p class="paper-title">Title withheld until publication</p>
+            <p><b><u>Jun-Hyeok Seo</u></b>, Jeong-Cheol Lee, Dong-Gyu Lee†</p>
+            <p class="paper-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2027</p>
+            <p><span class="pub-highlight">Under Review</span></p>
+          </div>
+        </div>
+
+        <div class="paper-box">
+          <div class="paper-box-image"><div class="paper-thumb paper-thumb--censored"><div class="badge badge--intl">ICLR 2027</div><div class="censored-box"><i class="fas fa-lock"></i><span>Censored</span></div></div></div>
+          <div class="paper-box-text">
+            <p class="paper-title">Title withheld until publication</p>
             <p><b><u>Jun-Hyeok Seo</u></b>, Da-Hee Kim, Dong-Gyu Lee†</p>
             <p class="paper-venue">International Conference on Learning Representations (ICLR), 2027</p>
             <p><span class="pub-highlight">Under Review</span></p>
@@ -1005,7 +1035,8 @@
 
       document.addEventListener('click', function (e) {
         var thumb = e.target.closest('.paper-thumb');
-        if (thumb) open(thumb.querySelector('img'));
+        var img = thumb && thumb.querySelector('img');
+        if (img) open(img);
       });
 
       // Click anywhere on the backdrop (or the close button) dismisses it;
